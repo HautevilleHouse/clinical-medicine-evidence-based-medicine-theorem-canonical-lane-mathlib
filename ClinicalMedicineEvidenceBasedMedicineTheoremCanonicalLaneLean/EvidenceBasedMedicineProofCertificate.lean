@@ -1,0 +1,20 @@
+import ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean.ClinicalFinalTheorem
+import ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean.CompartmentModelPackage
+import ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean.DiagnosticInferencePackage
+import ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean.SurvivalAnalysisPackage
+
+namespace HautevilleHouse
+namespace ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean
+
+structure EvidenceBasedMedicineProofCertificate where
+  clinicalAdmissibleClass : AdmissibleClass
+  compartmentModelEvidence : CompartmentModelEvidence (CompartmentModel.mk 0 [] [])
+  diagnosticEvidence : DiagnosticEvidence (DiagnosticTest.mk 0 0 0)
+  survivalEvidence : SurvivalEvidence (SurvivalData.mk [] [])
+  finalClosure : ConstrainedClinicalEvidenceClosure clinicalAdmissibleClass
+
+theorem generate_final_closure (A : AdmissibleClass) : ConstrainedClinicalEvidenceClosure A :=
+  constrained_clinical_evidence_endgame A
+
+end ClinicalMedicineEvidenceBasedMedicineTheoremCanonicalLaneLean
+end HautevilleHouse
